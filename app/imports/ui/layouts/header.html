@@ -1,0 +1,38 @@
+<template name="Header">
+  <!-- img class="ui fluid image" src="/images/header-image.jpg"
+       style="max-height: 300px" -->
+
+  <!-- side menu / TOC -->
+  <div class="ui top borderless inverted menu"
+       style="border-radius: 0px; color:white; background-color: #027450">
+    <div class="ui container">
+
+      <a class="item" href="{{pathFor 'Home_Page'}}">
+        <h1 style="color: white">ClubHub</h1></a>
+
+      <a class="{{ isActiveRoute 'Categories_Page'}} item"
+         href="{{pathFor 'Categories_Page'}}"
+         style="color: white">Categories</a>
+
+      <a class="item">
+        <div class="ui search">
+          <div class="ui icon input">
+            <input class="prompt" placeholder="Find a club" type="text"
+                   style="border-radius: 10px; margin: 0px;">
+            <i class="search icon"></i>
+          </div>
+          <div class="results"></div>
+        </div>
+      </a>
+
+      {{#if currentUser}}
+        <a class="{{ isActiveRoute 'Add_Stuff_Page'}} item"
+           href="{{ pathFor 'Add_Stuff_Page' }}">Add Stuff </a>
+        <a class="{{ isActiveRoute 'List_Stuff_Page'}} item"
+           href="{{ pathFor 'List_Stuff_Page' }}">List Stuff</a>
+      {{/if}}
+      <a href="#" class="right item"><p style="color: black">{{> loginButtons }}</p>
+      </a>
+    </div>
+  </div>
+</template>

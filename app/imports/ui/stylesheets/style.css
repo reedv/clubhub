@@ -1,0 +1,13 @@
+body {
+  /*padding-top: 61px;  /* Move body of page below navbar. */
+  background-color: white;
+}
+
+#login-buttons a,
+.accounts-dialog a {
+  color: white;
+}
+
+#login-buttons .login-close-text {
+  color: black;
+}
