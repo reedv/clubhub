@@ -4,6 +4,14 @@
        style="border-radius: 10px; margin: 10px">
     <div class="item">
       <h1>Categories</h1>
+      <div class="ui centered inverted menu">
+        <button class="ui inverted centered mini button" style="margin: 5px;">By
+          Major
+        </button>
+        <button class="ui inverted centered mini button" style="margin: 5px;">By
+          Keyword
+        </button>
+      </div>
     </div>
 
     <!-- items must use a-tags, not divs, to be clickable-->
@@ -22,12 +30,26 @@
     <a class="item" href="#">Major5
       <div class="ui label">10</div>
     </a>
+    <a class="item" href="#">Major Unspecified
+      <div class="ui label">10</div>
+    </a>
+
+    <!-- TODO
+    {{#if byMajor}}
+
+    {{else}}
+      {{#if byKeywords}}
+
+      {{/if}}
+    {{/if}}
+    -->
+
   </div>
 
 
   <!-- club profile cards -->
   <div class="pusher">
-    <div class="ui container">
+    <div class="ui container" style="border-radius: 10px">
       <div class="ui fluid link cards" style="margin: 10px">
 
         <div class="card">

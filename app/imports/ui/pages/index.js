@@ -19,4 +19,6 @@ import './categories.js';
 import './list-stuff-page.html';
 import './list-stuff-page.js';
 
+import './user-profile.html';
+import './user-profile.js';
 
