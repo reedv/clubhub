@@ -15,6 +15,20 @@ FlowRouter.route('/user-profile', {
   },
 });
 
+FlowRouter.route('/club-admin-profile', {
+  name: 'Club_Admin_Page',
+  action() {
+    BlazeLayout.render('App_Body', { main: 'Club_Admin_Page' });
+  },
+});
+
+FlowRouter.route('/site-admin-profile', {
+  name: 'Site_Admin_Page',
+  action() {
+    BlazeLayout.render('App_Body', { main: 'Site_Admin_Page' });
+  },
+});
+
 FlowRouter.route('/add-contact', {
   name: 'Add_Contact_Page',
   action() {

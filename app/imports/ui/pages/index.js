@@ -13,12 +13,18 @@ import './edit-stuff-page.js';
 import './home-page.html';
 import './home-page.js';
 
-import './categories.html';
-import './categories.js';
+import './categories-page.html';
+import './categories-page.js';
 
 import './list-stuff-page.html';
 import './list-stuff-page.js';
 
-import './user-profile.html';
-import './user-profile.js';
+import './user-profile-page.html';
+import './user-profile-page.js';
+
+import './club-admin-page.html';
+import './club-admin-page.js';
+
+import './site-admin-page.html';
+import './site-admin-page.js';
 

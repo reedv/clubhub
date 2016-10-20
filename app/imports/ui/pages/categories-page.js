@@ -18,6 +18,6 @@ Template.Categories_Page.onRendered(function enableSemantic() {
   // attaches sidebar to pusher element (profiles cards view), rather than body
   instance.$('.ui.sidebar')
       .sidebar({
-        context: $('.pusher')
+        context: $('.pusher')  // alts: .pusher OR .pusher .ui.container
       })
 });
