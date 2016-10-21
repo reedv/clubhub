@@ -11,3 +11,7 @@ body {
 #login-buttons .login-close-text {
   color: black;
 }
+
+#login-buttons #signup-link {
+  color: black;
+}
