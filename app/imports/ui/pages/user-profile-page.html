@@ -3,5 +3,26 @@
   {{#if currentUser}}
     <p> Username: {{firstName}}</p>
     <p> userId: {{userId}}</p>
+
+    <table>
+      <tbody>
+      <tr>
+        {{userDataField 'userName'}}
+      </tr>
+      <tr>
+        {{userDataField 'password'}}
+      </tr>
+      <tr>
+        {{userDataField 'clubs'}}
+      </tr>
+      <tr>
+        {{userDataField 'isClubAdmin'}}
+      </tr>
+      <tr>
+        {{userDataField 'isSiteAdmin'}}
+      </tr>
+      </tbody>
+    </table>
+
   {{/if}}
 </template>
