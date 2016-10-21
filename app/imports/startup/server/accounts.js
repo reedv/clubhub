@@ -24,8 +24,9 @@ Accounts.onCreateUser(function (options, user) {
    * */
   // initialize a new user profile
   const userName = user.username,
-      clubs = [],
+      clubs = ['The Null Club'],  // TODO: clubs should be objects denoted by their uniq. _ids (since names can change)
       isClubAdmin = false,
+      adminClubs = ['The Null Club'],
       isSiteAdmin = false;
 
   check(userName, String);  // this is a bit of a hack, need better way to check (or eliminate need to check here)
@@ -33,6 +34,7 @@ Accounts.onCreateUser(function (options, user) {
     userName: userName,
     clubs: clubs,
     isClubAdmin: isClubAdmin,
+    adminClubs: adminClubs,
     isSiteAdmin: isSiteAdmin,
   });
 

@@ -7,7 +7,9 @@
       <p> userId: {{userId}}</p>
 
       <table class="ui celled table">
-        <thead><th> Can use User collection document items to customize the page </th></thead>
+        <thead>
+        <th> Can use User collection document items to customize the page</th>
+        </thead>
         <tbody>
         <tr>
           {{#if userDataField 'userName'}}
@@ -18,7 +20,9 @@
         </tr>
         <tr>
           {{#if userDataField 'clubs'}}
-            {{userDataField 'clubs'}}
+            {{#each club in userDataField 'clubs'}}
+              {{ club }}
+            {{/each}}
           {{else}}
             Clubs placeholder
           {{/if}}
@@ -28,6 +32,15 @@
             {{userDataField 'isClubAdmin'}}
           {{else}}
             ClubAdmin placeholder
+          {{/if}}
+        </tr>
+        <tr>
+          {{#if userDataField 'adminClubs'}}
+            {{#each club in userDataField 'adminClubs'}}
+              {{ club }}
+            {{/each}}
+          {{else}}
+            Admin clubs placeholder
           {{/if}}
         </tr>
         <tr>

@@ -30,6 +30,12 @@ export const UsersSchema = new SimpleSchema({
     type: Boolean,
     optional: false,
   },
+  adminClubs: {
+    label: 'adminClubs',
+    type: [String],
+    optional: true,
+    max: 200,
+  },
   isSiteAdmin: {
     label: 'isSiteAdmin',
     type: Boolean,

@@ -32,7 +32,7 @@ Template.User_Profile_Page.helpers({
     // here, we search by username, which we assume to be uniq.
     const user = Users.findOne({userName: Meteor.user().username});  // returns undefined if no matching doc. found
     // See https://dweldon.silvrback.com/guards to understand '&&' in next line.
-    // if the user exists, then return the specified fieldVal
+    // once the subcribed collection has loaded, if the user exists, then return the specified fieldVal
     return user && user[fieldVal];
   },
 
