@@ -1,28 +1,44 @@
 <template name="User_Profile_Page">
   THIS IS A TEST
-  {{#if currentUser}}
-    <p> Username: {{firstName}}</p>
-    <p> userId: {{userId}}</p>
+  <!-- Make sure all subscriptions for this template are available to us, so fineOne can access subcribed collections -->
+  {{#if Template.subscriptionsReady}}
+    {{#if currentUser}}
+      <p> Username: {{firstName}}</p>
+      <p> userId: {{userId}}</p>
 
-    <table>
-      <tbody>
-      <tr>
-        {{userDataField 'userName'}}
-      </tr>
-      <tr>
-        {{userDataField 'password'}}
-      </tr>
-      <tr>
-        {{userDataField 'clubs'}}
-      </tr>
-      <tr>
-        {{userDataField 'isClubAdmin'}}
-      </tr>
-      <tr>
-        {{userDataField 'isSiteAdmin'}}
-      </tr>
-      </tbody>
-    </table>
-
+      <table class="ui celled table">
+        <thead><th> Can use User collection document items to customize the page </th></thead>
+        <tbody>
+        <tr>
+          {{#if userDataField 'userName'}}
+            {{userDataField 'userName'}}
+          {{else}}
+            userName placeholder
+          {{/if}}
+        </tr>
+        <tr>
+          {{#if userDataField 'clubs'}}
+            {{userDataField 'clubs'}}
+          {{else}}
+            Clubs placeholder
+          {{/if}}
+        </tr>
+        <tr>
+          {{#if userDataField 'isClubAdmin'}}
+            {{userDataField 'isClubAdmin'}}
+          {{else}}
+            ClubAdmin placeholder
+          {{/if}}
+        </tr>
+        <tr>
+          {{#if userDataField 'isSiteAdmin'}}
+            {{userDataField 'isSiteAdmin'}}
+          {{else}}
+            SiteAdmin placeholder
+          {{/if}}
+        </tr>
+        </tbody>
+      </table>
+    {{/if}}
   {{/if}}
 </template>

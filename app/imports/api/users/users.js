@@ -13,14 +13,8 @@ export const Users = new Mongo.Collection('Users');
  * Create the schema for Stuff
  */
 export const UsersSchema = new SimpleSchema({
-  userName: {
+  userName: {  // assumes that usernames will be uniq. else need to store user's _id
     label: 'userName',
-    type: String,
-    optional: false,
-    max: 200,
-  },
-  password: {
-    label: 'password',
     type: String,
     optional: false,
     max: 200,

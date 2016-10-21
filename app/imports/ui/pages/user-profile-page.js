@@ -29,13 +29,11 @@ Template.User_Profile_Page.onCreated(function onCreated() {
 Template.User_Profile_Page.helpers({
   userDataField(fieldVal) {
 
-    // app/imports/startup/client/router.js defines the 'id' vs '_id' bindings
-    //   see app/imports/ui/pages/home-page.html
-    const user = Users.findOne(Meteor.user().username);  // returns undefined if no matching doc. found
-
+    // here, we search by username, which we assume to be uniq.
+    const user = Users.findOne({userName: Meteor.user().username});  // returns undefined if no matching doc. found
     // See https://dweldon.silvrback.com/guards to understand '&&' in next line.
     // if the user exists, then return the specified fieldVal
-    return Users && user[fieldVal];
+    return user && user[fieldVal];
   },
 
   firstName: function() {
