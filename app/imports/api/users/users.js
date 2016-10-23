@@ -21,7 +21,13 @@ export const UsersSchema = new SimpleSchema({
   },
   clubs: {
     label: 'clubs',
-    type: [String],
+    type: [String],  // TODO: should eventually be an array of custom 'club' objects
+    optional: true,
+    max: 200,
+  },
+  events: {
+    label: 'events',
+    type: [String],  // TODO: should eventually be an array of custom 'event' objects
     optional: true,
     max: 200,
   },

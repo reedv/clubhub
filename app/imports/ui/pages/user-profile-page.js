@@ -53,7 +53,7 @@ Template.User_Profile_Page.helpers({
 
 Template.User_Profile_Page.helpers({
   homeActiveClass() {
-    return Template.instance().navMenuActive.get(homeActive) ? 'active' : '';
+    return Template.instance().navMenuActive.get(homeActive) ? 'active' : '';  // 'active' string also doubles as truthy
   },
   eventsActiveClass() {
     return Template.instance().navMenuActive.get(eventsActive) ? 'active' : '';

@@ -25,6 +25,7 @@ Accounts.onCreateUser(function (options, user) {
   // initialize a new user profile
   const userName = user.username,
       clubs = ['The Null Club'],  // TODO: clubs should be objects denoted by their uniq. _ids (since names can change)
+      events = ['The Null Event'],
       isClubAdmin = false,
       adminClubs = ['The Null Club'],
       isSiteAdmin = false;
@@ -33,6 +34,7 @@ Accounts.onCreateUser(function (options, user) {
   Users.insert({
     userName: userName,
     clubs: clubs,
+    events: events,
     isClubAdmin: isClubAdmin,
     adminClubs: adminClubs,
     isSiteAdmin: isSiteAdmin,
