@@ -1,35 +1,171 @@
 <template name="Home_Page">
+  <!-- NOTE: the picture I use here is some generic UH picture I found online -->
+  <div class="ui fluid centered grid landing-img">
+    <div class="column"><p style="color: white;">
+      Join the club:</p>
+      <p style="color: white;">
+        ClubHub is blah blah blah generic mission statement</p>
+    </div>
+  </div>
+
+  <div class="ui segments">
+    <div class="ui segment"><h2>Featured clubs </h2></div>
+    <div class="ui segment">
+      <div class="ui stackable fluid link cards" style="margin: 10px">
+        <div class="card">
+          <div class="image">
+            <img class="ui large image" src="/images/Sample-Photo-1.jpg">
+          </div>
+          <div class="content">
+            <div class="header">Matt Giampietro</div>
+            <div class="meta">
+              <a>Friends</a>
+            </div>
+            <div class="description">
+              Matthew is an interior designer living in New York.
+            </div>
+          </div>
+          <div class="extra content">
+      <span class="right floated">
+        Joined in 2013
+      </span>
+            <span>
+        <i class="user icon"></i>
+        75 Friends
+      </span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="image">
+            <img class="ui large image" src="/images/Sample-Photo-1.jpg">
+          </div>
+          <div class="content">
+            <div class="header">Molly</div>
+            <div class="meta">
+              <span class="date">Coworker</span>
+            </div>
+            <div class="description">
+              Molly is a personal assistant living in Paris.
+            </div>
+          </div>
+          <div class="extra content">
+      <span class="right floated">
+        Joined in 2011
+      </span>
+            <span>
+        <i class="user icon"></i>
+        35 Friends
+      </span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="image">
+            <img class="ui large image" src="/images/Sample-Photo-1.jpg">
+          </div>
+          <div class="content">
+            <div class="header">Elyse</div>
+            <div class="meta">
+              <a>Coworker</a>
+            </div>
+            <div class="description">
+              Elyse is a copywriter working in New York.
+            </div>
+          </div>
+          <div class="extra content">
+      <span class="right floated">
+        Joined in 2014
+      </span>
+            <span>
+        <i class="user icon"></i>
+        151 Friends
+      </span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="image">
+            <img class="ui large image" src="/images/Sample-Photo-1.jpg">
+          </div>
+          <div class="content">
+            <div class="header">Molly</div>
+            <div class="meta">
+              <span class="date">Coworker</span>
+            </div>
+            <div class="description">
+              Molly is a personal assistant living in Paris.
+            </div>
+          </div>
+          <div class="extra content">
+      <span class="right floated">
+        Joined in 2011
+      </span>
+            <span>
+        <i class="user icon"></i>
+        35 Friends
+      </span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="image">
+            <img class="ui large image" src="/images/Sample-Photo-1.jpg">
+          </div>
+          <div class="content">
+            <div class="header">Molly</div>
+            <div class="meta">
+              <span class="date">Coworker</span>
+            </div>
+            <div class="description">
+              Molly is a personal assistant living in Paris.
+            </div>
+          </div>
+          <div class="extra content">
+      <span class="right floated">
+        Joined in 2011
+      </span>
+            <span>
+        <i class="user icon"></i>
+        35 Friends
+      </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
   <div class="ui container">
-
     {{#if Template.subscriptionsReady}}
-
-    <table class="ui celled table" style="margin: 10px">
-      <thead>
-      <tr>
-        <th>First</th>
-        <th>Last</th>
-        <th>Address</th>
-        <th>Phone</th>
-        <th>Email</th>
-        <th>Edit Contact</th>
-      </tr>
-      </thead>
-      <tbody>
-      {{#each contact in contactsList}}
-      <tr>
-        <td>{{contact.firstName}}</td>
-        <td>{{contact.lastName}}</td>
-        <td>{{contact.address}}</td>
-        <td>{{contact.phone}}</td>
-        <td>{{contact.email}}</td>
-        <!-- link to page to edit this contact -->
-        <!-- to see whether to binf to 'id' or '_id', see app/imports/startup/client/router.js for url info-->
-        <td><a href="{{pathFor 'Edit_Contact_Page' id=contact._id}}">Edit</a>
-        </td>
-      </tr>
-      {{/each}}
-      </tbody>
-    </table>
+      <table class="ui celled table" style="margin: 10px">
+        <thead>
+        <tr>
+          <th>First</th>
+          <th>Last</th>
+          <th>Address</th>
+          <th>Phone</th>
+          <th>Email</th>
+          <th>Edit Contact</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each contact in contactsList}}
+          <tr>
+            <td>{{contact.firstName}}</td>
+            <td>{{contact.lastName}}</td>
+            <td>{{contact.address}}</td>
+            <td>{{contact.phone}}</td>
+            <td>{{contact.email}}</td>
+            <!-- link to page to edit this contact -->
+            <!-- to see whether to binf to 'id' or '_id', see app/imports/startup/client/router.js for url info-->
+            <td><a
+                href="{{pathFor 'Edit_Contact_Page' id=contact._id}}">Edit</a>
+            </td>
+          </tr>
+        {{/each}}
+        </tbody>
+      </table>
     {{else}}
       {{> Loading}}
     {{/if}}
