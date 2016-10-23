@@ -15,3 +15,11 @@ body {
 #login-buttons #signup-link {
   color: black;
 }
+
+.landing-img {
+  background: linear-gradient( rgba(0, 0, 0, 0.825), rgba(0, 0, 0, 0.825) ), url('http://www.nursing.hawaii.edu/sites/www.nursing.hawaii.edu/files/image/images/IMG_3763.jpg');
+  opacity: 0.8;
+  background-size: cover;
+  filter: blur(0px);
+  height: 600px;
+}

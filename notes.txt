@@ -34,3 +34,8 @@ Upon first login, all users must agree to Terms of Use before they obtain access
 ** Browse clubs by interest area(s).
 
 * Layout / behavior of pages is is going to be mainly decided by whether the site is going to be a connection pt. for people to find out about different clubs OR a social platform for people to communicate among their clubs (which is not seem very much in line with the stated goal of the project).
+
+* Home page will have landing image with overlaying text divided into 2 columns
+** LHS: Generic mission statement 
+** RHS: custom login menu (like github)
+** https://www.sitepoint.com/creating-custom-login-registration-form-with-meteor/
