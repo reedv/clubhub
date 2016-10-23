@@ -1,8 +1,319 @@
 <template name="User_Profile_Page">
-  THIS IS A TEST
   <!-- Make sure all subscriptions for this template are available to us, so fineOne can access subcribed collections -->
   {{#if Template.subscriptionsReady}}
     {{#if currentUser}}
+
+      <div class="ui container">
+        <div class="ui two column grid">
+          <div class="four wide column">
+            <div class="ui left secondary vertical pointing menu">
+              <a class="item homeTab {{homeActiveClass}}">
+                <i class="home icon"></i>Home
+              </a>
+              <a class="item eventsTab {{eventsActiveClass}}">
+                <i class="calendar outline icon"></i>Events
+              </a>
+              <a class="item friendsTab {{friendsActiveClass}}">
+                <i class="user icon"></i>Friends
+              </a>
+            </div>
+          </div>
+
+
+          <!-- user home page logic -->
+          {{#if homeActiveClass}}
+            <div class="ten wide column">
+              THIS IS TEST HOME
+              <div class="ui container" style="padding: 0px">
+                <h2>My Clubs</h2>
+                <div class="ui three stackable fluid link cards">
+
+                  <div class="card">
+                    <div class="image">
+                      <img class="ui small image"
+                           src="/images/Sample-Photo-1.jpg">
+                    </div>
+                    <div class="content">
+                      <div class="header">Matt Giampietro</div>
+                      <div class="meta">
+                        <a>Friends</a>
+                      </div>
+                      <div class="description">
+                        Matthew is an interior designer living in New York.
+                      </div>
+                    </div>
+                    <div class="extra content">
+                      <span class="right floated">
+                        Joined in 2013
+                      </span>
+                      <span>
+                        <i class="user icon"></i>
+                        75 Friends
+                      </span>
+                    </div>
+                  </div>
+
+                  <div class="card">
+                    <div class="image">
+                      <img class="ui small image"
+                           src="/images/Sample-Photo-1.jpg">
+                    </div>
+                    <div class="content">
+                      <div class="header">Molly</div>
+                      <div class="meta">
+                        <span class="date">Coworker</span>
+                      </div>
+                      <div class="description">
+                        Molly is a personal assistant living in Paris.
+                      </div>
+                    </div>
+                    <div class="extra content">
+                      <span class="right floated">
+                        Joined in 2011
+                      </span>
+                      <span>
+                        <i class="user icon"></i>
+                        35 Friends
+                      </span>
+                    </div>
+                  </div>
+
+                  <div class="card">
+                    <div class="image">
+                      <img class="ui small image"
+                           src="/images/Sample-Photo-1.jpg">
+                    </div>
+                    <div class="content">
+                      <div class="header">Elyse</div>
+                      <div class="meta">
+                        <a>Coworker</a>
+                      </div>
+                      <div class="description">
+                        Elyse is a copywriter working in New York.
+                      </div>
+                    </div>
+                    <div class="extra content">
+                      <span class="right floated">
+                        Joined in 2014
+                      </span>
+                      <span>
+                        <i class="user icon"></i>
+                        151 Friends
+                      </span>
+                    </div>
+                  </div>
+
+                  <div class="card">
+                    <div class="image">
+                      <img class="ui small image"
+                           src="/images/Sample-Photo-1.jpg">
+                    </div>
+                    <div class="content">
+                      <div class="header">Molly</div>
+                      <div class="meta">
+                        <span class="date">Coworker</span>
+                      </div>
+                      <div class="description">
+                        Molly is a personal assistant living in Paris.
+                      </div>
+                    </div>
+                    <div class="extra content">
+                      <span class="right floated">
+                        Joined in 2011
+                      </span>
+                      <span>
+                        <i class="user icon"></i>
+                        35 Friends
+                      </span>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          {{/if}}
+
+
+          <!-- user events page logic -->
+          {{#if eventsActiveClass}}
+            <div class="ten wide column">
+              THIS IS TEST EVENTS
+              Honestly, this would be better as a calendar
+              <div class="ui container">
+                <div class="ui huge celled list">
+
+                  <div class="item">
+                    <div class="ui internally celled stackable grid">
+                      <div class="row">
+                        <div class="four wide column">
+                          <div class="ui raised card" style="width: 110px;">
+                            <div class="content"
+                                 style="background-color: darkslategray;">
+                              <div class="header float center"
+                                   style="color: yellow;">9
+                              </div>
+                            </div>
+                            <div class="extra content" style="padding: 10px">
+                              <div class="author"
+                                   style="color: darkslategray; font-size: small">
+                                thisMonth, 2016
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="ten wide column">
+                          <div class="content">
+                            <a class="header">clubName</a>
+                            <div class="description">Do something at/for <a><b>eventName.</b></a>
+                              Misc. commentary.
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="item">
+                    <div class="ui internally celled stackable grid">
+                      <div class="row">
+                        <div class="four wide column">
+                          <div class="ui raised card" style="width: 110px;">
+                            <div class="content"
+                                 style="background-color: darkslategray;">
+                              <div class="header float center"
+                                   style="color: yellow;">
+                                23
+                              </div>
+                            </div>
+                            <div class="extra content" style="padding: 10px">
+                              <div class="author"
+                                   style="color: darkslategray; font-size: small">
+                                thisMonth, 2016
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="ten wide column">
+                          <div class="content">
+                            <a class="header">clubName</a>
+                            <div class="description">Do something at/for <a><b>eventName.</b></a>
+                              Misc. commentary.
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="item">
+                    <div class="ui internally celled stackable grid">
+                      <div class="row">
+                        <div class="four wide column">
+                          <div class="ui raised card" style="width: 110px;">
+                            <div class="content"
+                                 style="background-color: darkslategray;">
+                              <div class="header float center"
+                                   style="color: greenyellow;">9
+                              </div>
+                            </div>
+                            <div class="extra content" style="padding: 10px">
+                              <div class="author"
+                                   style="color: darkslategray; font-size: small">
+                                laterMonth, 2016
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="ten wide column">
+                          <div class="content">
+                            <a class="header">clubName</a>
+                            <div class="description">Do something at/for <a><b>eventName.</b></a>
+                              Misc. commentary.
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="item">
+                    <div class="ui internally celled stackable grid">
+                      <div class="row">
+                        <div class="four wide column">
+                          <div class="ui raised card" style="width: 110px;">
+                            <div class="content"
+                                 style="background-color: darkslategray;">
+                              <div class="header float center"
+                                   style="color: greenyellow;">15
+                              </div>
+                            </div>
+                            <div class="extra content" style="padding: 10px">
+                              <div class="author"
+                                   style="color: darkslategray; font-size: small">
+                                laterMonth, 2016
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="ten wide column">
+                          <div class="content">
+                            <a class="header">clubName</a>
+                            <div class="description">Do something at/for <a><b>eventName.</b></a>
+                              Misc. commentary.
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="item">
+                    <div class="ui internally celled stackable grid">
+                      <div class="row">
+                        <div class="four wide column">
+                          <div class="ui raised card" style="width: 110px;">
+                            <div class="content"
+                                 style="background-color: darkslategray;">
+                              <div class="header float center"
+                                   style="color: greenyellow;">25
+                              </div>
+                            </div>
+                            <div class="extra content" style="padding: 10px">
+                              <div class="author"
+                                   style="color: darkslategray; font-size: small">
+                                laterMonth, 2016
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="ten wide column">
+                          <div class="content">
+                            <a class="header">clubName</a>
+                            <div class="description">Do something at/for <a><b>eventName.</b></a>
+                              Misc. commentary.
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {{/if}}
+
+
+          <!-- user friends page logic -->
+          {{#if friendsActiveClass}}
+            <div class="column">
+              THIS IS TEST FRIENDS
+            </div>
+          {{/if}}
+        </div>
+      </div>
+
+
+      <!-- testing and proof-of-concept section -->
       <p> Username: {{firstName}}</p>
       <p> userId: {{userId}}</p>
 
@@ -12,6 +323,7 @@
         </thead>
         <tbody>
         <tr>
+          <h3>username:</h3>
           {{#if userDataField 'userName'}}
             {{userDataField 'userName'}}
           {{else}}
@@ -19,6 +331,7 @@
           {{/if}}
         </tr>
         <tr>
+          <h3>clubs:</h3>
           {{#if userDataField 'clubs'}}
             {{#each club in userDataField 'clubs'}}
               {{ club }}
@@ -28,6 +341,17 @@
           {{/if}}
         </tr>
         <tr>
+          <h3>events:</h3>
+          {{#if userDataField 'events'}}
+            {{#each event in userDataField 'events'}}
+              {{ event }}
+            {{/each}}
+          {{else}}
+            events placeholder
+          {{/if}}
+        </tr>
+        <tr>
+          <h3>isClubAdmin:</h3>
           {{#if userDataField 'isClubAdmin'}}
             {{userDataField 'isClubAdmin'}}
           {{else}}
@@ -35,6 +359,7 @@
           {{/if}}
         </tr>
         <tr>
+          <h3>admin of clubs:</h3>
           {{#if userDataField 'adminClubs'}}
             {{#each club in userDataField 'adminClubs'}}
               {{ club }}
@@ -44,6 +369,7 @@
           {{/if}}
         </tr>
         <tr>
+          <h3>isSiteAdmin:</h3>
           {{#if userDataField 'isSiteAdmin'}}
             {{userDataField 'isSiteAdmin'}}
           {{else}}
