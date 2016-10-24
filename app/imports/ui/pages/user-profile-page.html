@@ -324,13 +324,13 @@
 
       <table class="ui celled table">
         <thead>
-        <th> Can use User collection document items to customize the page</th>
+        <th> Can use extended Meteor.users collection document items to customize the page</th>
         </thead>
         <tbody>
         <tr>
-          <h3>username:</h3>
-          {{#if userDataField 'userName'}}
-            {{userDataField 'userName'}}
+          <h3>Data of username:</h3>
+          {{#if userDataField 'username'}}
+            {{userDataField 'username'}}
           {{else}}
             userName placeholder
           {{/if}}
@@ -344,7 +344,7 @@
                 <li>{{ club.bio }}</li>
                 <li>
                   <ul>
-                    <li>{{club.clubName}} events:</li>
+                    <li><h5>{{club.clubName}} events:</h5></li>
                     {{#each event in club.events}}
                       <li>{{event}}</li>
                     {{/each}}
@@ -370,14 +370,6 @@
           {{/if}}
         </tr>
         <tr>
-          <h3>isClubAdmin:</h3>
-          {{#if userDataField 'isClubAdmin'}}
-            {{userDataField 'isClubAdmin'}}
-          {{else}}
-            ClubAdmin placeholder
-          {{/if}}
-        </tr>
-        <tr>
           <h3>admin of clubs:</h3>
           {{#if userDataField 'adminClubs'}}
             {{#each club in userDataField 'adminClubs'}}
@@ -386,7 +378,7 @@
                 <li>{{ club.bio }}</li>
                 <li>
                   <ul>
-                    <li>{{club.clubName}} events:</li>
+                    <li><h5>{{club.clubName}} events:</h5></li>
                     {{#each event in club.events}}
                       <li>{{event}}</li>
                     {{/each}}

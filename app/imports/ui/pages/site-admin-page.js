@@ -5,7 +5,7 @@ import {Template} from 'meteor/templating';
 import {ReactiveDict} from 'meteor/reactive-dict';
 import {FlowRouter} from 'meteor/kadira:flow-router';
 import {_} from 'meteor/underscore';
-import {Users, UsersSchema} from '../../api/users/users.js';
+import { Meteor } from 'meteor/meteor'  // to access Meteor.users collection
 
 // consts to use in reactive dicts
 const displayErrorMessages = 'displayErrorMessages';
@@ -16,8 +16,7 @@ const friendsActive = 'friendsActive';
 
 Template.Site_Admin_Page.onCreated(function onCreated() {
   this.autorun(() => {
-    // 'autopublish' pkg has been removed
-    this.subscribe('Users');
+    this.subscribe('UserData');  // extended Meteor.user collection data
   });
 
   // use reactive dict to store error messages
@@ -28,17 +27,13 @@ Template.Site_Admin_Page.onCreated(function onCreated() {
   this.navMenuActive.set(homeActive, true);
   this.navMenuActive.set(eventsActive, false);
   this.navMenuActive.set(friendsActive, false);
-
-  // attach our context for validation to the UsersSchema (set context name to match the template name)
-  this.context = UsersSchema.namedContext('Site_Admin_Page');
 });
 
 // useful thing to note, all Collection docs. have a _id key that is uniq. to that doc
 Template.Site_Admin_Page.helpers({
   userDataField(fieldVal) {
-
     // here, we search by username, which we assume to be uniq.
-    const user = Users.findOne({ userName: Meteor.user().username });  // returns undefined if no matching doc. found
+    const user = Meteor.users.findOne({ username: Meteor.user().username });  // returns undefined if no matching doc. found
     // See https://dweldon.silvrback.com/guards to understand '&&' in next line.
     // once the subcribed collection has loaded, if the user exists, then return the specified fieldVal
     return user && user[fieldVal];
