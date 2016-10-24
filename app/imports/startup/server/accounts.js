@@ -1,8 +1,6 @@
 import {Meteor} from 'meteor/meteor';
 import {Accounts} from 'meteor/accounts-base';
-import {Users} from '../../api/users/users.js';
 import {Clubs, ClubsSchema} from '../../api/clubs/clubs.js';
-import {check} from 'meteor/check';
 
 /* eslint-disable no-console */
 
@@ -45,18 +43,13 @@ Accounts.onCreateUser(function (options, user) {
     Clubs.insert(defaultClub);
   }
 
-  // create new user profile
-  let newUser = {
-    userName: user.username,
-    clubs: [defaultClub],  // TODO: clubs should be objects denoted by their uniq. _ids (since names can change)
-    events: ['The Null Event-1', 'The Null Event-2'],
-    isClubAdmin: false,
-    adminClubs: [defaultClub],
-    isSiteAdmin: false
-  };
-
-  Users.insert(newUser);
-
+  // extending Meteor.user collection with custom fields
+  // this is the recommended way, see https://guide.meteor.com/accounts.html#adding-fields-on-registration
+  // TODO: find how to extend the Meteor.user schema to always include these fields
+  user.clubs = [defaultClub];
+  user.events = ['The Null Event-1', 'The Null Event-2'];
+  user.adminClubs = [defaultClub];
+  user.isSiteAdmin = false;
 
   // We still want the default hook's 'profile' behavior.
   if (options.profile)
