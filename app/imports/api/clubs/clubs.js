@@ -40,3 +40,12 @@ export const ClubsSchema = new SimpleSchema({
 });
 Clubs.attachSchema(ClubsSchema);
 
+
+// for testing: for testing logic of user discovering and joining a club
+const joinableNullClub = {
+  clubName: 'joinableNull Club',
+  bio: 'Cross over children. All are welcome',
+  events: ['Bad B-Movies', 'Chair Stackathon'],
+  url: 'https://join.us'
+};
+Clubs.insert(joinableNullClub);
