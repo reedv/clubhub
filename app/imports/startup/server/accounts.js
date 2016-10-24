@@ -1,6 +1,7 @@
 import {Meteor} from 'meteor/meteor';
 import {Accounts} from 'meteor/accounts-base';
 import {Users} from '../../api/users/users.js';
+import {Clubs, ClubsSchema} from '../../api/clubs/clubs.js';
 import {check} from 'meteor/check';
 
 /* eslint-disable no-console */
@@ -22,23 +23,40 @@ Accounts.onCreateUser(function (options, user) {
       its reset field contains tokens used by forgot password links, and its resume field
       contains tokens used to keep you logged in between sessions.
    * */
-  // initialize a new user profile
-  const userName = user.username,
-      clubs = ['The Null Club'],  // TODO: clubs should be objects denoted by their uniq. _ids (since names can change)
-      events = ['The Null Event'],
-      isClubAdmin = false,
-      adminClubs = ['The Null Club'],
-      isSiteAdmin = false;
 
-  check(userName, String);  // this is a bit of a hack, need better way to check (or eliminate need to check here)
-  Users.insert({
-    userName: userName,
-    clubs: clubs,
-    events: events,
-    isClubAdmin: isClubAdmin,
-    adminClubs: adminClubs,
-    isSiteAdmin: isSiteAdmin,
-  });
+  /* initialize a new user */
+
+  // create a default club to be joined by all users (for testing)
+  // FIXME: is this the bet way to have a default collection obj. accessable at startup (may also want to add validation)?
+
+  // NOTE: The const declaration creates a read-only reference to a value.
+  // It does not mean the value it holds is immutable, just that the variable
+  // identifier cannot be reassigned
+  const defaultClub = {
+    clubName: 'The Null Club',
+    bio: 'This is the null club,\nwere all in it!',
+    events: ['nullClub event-1', 'nullClub event-2'],
+    url: 'https://theNullClub.org',
+  };
+  // if the default club has not yet been added to Clubs collection, do so.
+  // returns 'undefined' if none found (falsey), else first matched obj. (truthy?)
+  let defaultPresent = Clubs.findOne({clubName: 'The Null Club'});
+  if(!(defaultPresent)){
+    Clubs.insert(defaultClub);
+  }
+
+  // create new user profile
+  let newUser = {
+    userName: user.username,
+    clubs: [defaultClub],  // TODO: clubs should be objects denoted by their uniq. _ids (since names can change)
+    events: ['The Null Event-1', 'The Null Event-2'],
+    isClubAdmin: false,
+    adminClubs: [defaultClub],
+    isSiteAdmin: false
+  };
+
+  Users.insert(newUser);
+
 
   // We still want the default hook's 'profile' behavior.
   if (options.profile)

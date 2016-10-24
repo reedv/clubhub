@@ -4,6 +4,7 @@
 
 import { Mongo } from 'meteor/mongo';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
+import { Clubs, ClubsSchema } from '../clubs/clubs.js';
 
 /* eslint-disable object-shorthand */
 
@@ -21,7 +22,7 @@ export const UsersSchema = new SimpleSchema({
   },
   clubs: {
     label: 'clubs',
-    type: [String],  // TODO: should eventually be an array of custom 'club' objects
+    type: [ClubsSchema],
     optional: true,
     max: 200,
   },
@@ -38,7 +39,7 @@ export const UsersSchema = new SimpleSchema({
   },
   adminClubs: {
     label: 'adminClubs',
-    type: [String],
+    type: [ClubsSchema],
     optional: true,
     max: 200,
   },
