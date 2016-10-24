@@ -43,7 +43,6 @@ arillo:flow-router-helpers
 semantic:ui
 juliancwirko:postcss
 less
-useraccounts:semantic-ui
 fabienb4:autoform-semantic-ui
 
 # For prototyping purposes, enable autopublish and insecure

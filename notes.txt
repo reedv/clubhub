@@ -39,3 +39,12 @@ Upon first login, all users must agree to Terms of Use before they obtain access
 ** LHS: Generic mission statement 
 ** RHS: custom login menu (like github)
 ** https://www.sitepoint.com/creating-custom-login-registration-form-with-meteor/
+
+* basic club joining logic
+** 1. user browses clubs, clicking around on different cards to see clubs' profiles
+** 2. finds a club they would like to join
+** 3. they send a request to the club admin(s) for info on how to join
+** 4. admin receive join request
+** 5. admin sends a message about how to join
+** Look to see if there are any meteor messaging pkgs that could make this easier
+** https://atmospherejs.com/socialize/messaging

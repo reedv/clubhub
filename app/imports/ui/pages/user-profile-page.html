@@ -146,7 +146,8 @@
                     <div class="ui internally celled stackable grid">
                       <div class="row">
                         <div class="four wide column">
-                          <div class="ui raised link card" style="width: 110px;">
+                          <div class="ui raised link card"
+                               style="width: 110px;">
                             <div class="content"
                                  style="background-color: darkslategray;">
                               <div class="header float center"
@@ -177,7 +178,8 @@
                     <div class="ui internally celled stackable grid">
                       <div class="row">
                         <div class="four wide column">
-                          <div class="ui raised link card" style="width: 110px;">
+                          <div class="ui raised link card"
+                               style="width: 110px;">
                             <div class="content"
                                  style="background-color: darkslategray;">
                               <div class="header float center"
@@ -209,7 +211,8 @@
                     <div class="ui internally celled stackable grid">
                       <div class="row">
                         <div class="four wide column">
-                          <div class="ui raised link card" style="width: 110px;">
+                          <div class="ui raised link card"
+                               style="width: 110px;">
                             <div class="content"
                                  style="background-color: darkslategray;">
                               <div class="header float center"
@@ -240,7 +243,8 @@
                     <div class="ui internally celled stackable grid">
                       <div class="row">
                         <div class="four wide column">
-                          <div class="ui raised link card" style="width: 110px;">
+                          <div class="ui raised link card"
+                               style="width: 110px;">
                             <div class="content"
                                  style="background-color: darkslategray;">
                               <div class="header float center"
@@ -271,7 +275,8 @@
                     <div class="ui internally celled stackable grid">
                       <div class="row">
                         <div class="four wide column">
-                          <div class="ui raised link card" style="width: 110px;">
+                          <div class="ui raised link card"
+                               style="width: 110px;">
                             <div class="content"
                                  style="background-color: darkslategray;">
                               <div class="header float center"
@@ -333,9 +338,21 @@
         <tr>
           <h3>clubs:</h3>
           {{#if userDataField 'clubs'}}
-            {{#each club in userDataField 'clubs'}}
-              {{ club }}
-            {{/each}}
+            <ul>
+              {{#each club in userDataField 'clubs'}}
+                <li><h5>{{ club.clubName }}:</h5></li>
+                <li>{{ club.bio }}</li>
+                <li>
+                  <ul>
+                    <li>{{club.clubName}} events:</li>
+                    {{#each event in club.events}}
+                      <li>{{event}}</li>
+                    {{/each}}
+                  </ul>
+                </li>
+                <li>{{ club.url }}</li>
+              {{/each}}
+            </ul>
           {{else}}
             Clubs placeholder
           {{/if}}
@@ -343,9 +360,11 @@
         <tr>
           <h3>events:</h3>
           {{#if userDataField 'events'}}
-            {{#each event in userDataField 'events'}}
-              {{ event }}
-            {{/each}}
+            <ul>
+              {{#each event in userDataField 'events'}}
+                <li>{{ event }}</li>
+              {{/each}}
+            </ul>
           {{else}}
             events placeholder
           {{/if}}
@@ -362,7 +381,19 @@
           <h3>admin of clubs:</h3>
           {{#if userDataField 'adminClubs'}}
             {{#each club in userDataField 'adminClubs'}}
-              {{ club }}
+              <ul>
+                <li><h5>{{ club.clubName }}:</h5></li>
+                <li>{{ club.bio }}</li>
+                <li>
+                  <ul>
+                    <li>{{club.clubName}} events:</li>
+                    {{#each event in club.events}}
+                      <li>{{event}}</li>
+                    {{/each}}
+                  </ul>
+                </li>
+                <li>{{ club.url }}</li>
+              </ul>
             {{/each}}
           {{else}}
             Admin clubs placeholder
