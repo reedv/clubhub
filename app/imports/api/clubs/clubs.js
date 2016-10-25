@@ -36,6 +36,16 @@ export const ClubsSchema = new SimpleSchema({
     type: String,
     optional: true,
   },
+  members: {
+    label: 'members',
+    type: [String],  // TODO: may what to have more info per member (array of n-tuples)
+    optional: true,
+  },
+  admins: {
+    label: 'admins',
+    type: [String],
+    optional: true,
+  },
 
 });
 Clubs.attachSchema(ClubsSchema);

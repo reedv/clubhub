@@ -324,7 +324,9 @@
 
       <table class="ui celled table">
         <thead>
-        <th> Can use extended Meteor.users collection document items to customize the page</th>
+        <th> Can use extended Meteor.users collection document items to
+          customize the page
+        </th>
         </thead>
         <tbody>
         <tr>
@@ -340,7 +342,7 @@
           {{#if userDataField 'clubs'}}
             <ul>
               {{#each club in userDataField 'clubs'}}
-                <li><h5>{{ club.clubName }}:</h5></li>
+                <li><h5>{{ club.clubName }} ({{club._id}}):</h5></li>
                 <li>{{ club.bio }}</li>
                 <li>
                   <ul>
@@ -351,6 +353,14 @@
                   </ul>
                 </li>
                 <li>{{ club.url }}</li>
+                <li>
+                  <ul>
+                    <li><h5>{{club.clubName}} members:</h5></li>
+                    {{#each member in club.members}}
+                      <li>{{member}}</li>
+                    {{/each}}
+                  </ul>
+                </li>
               {{/each}}
             </ul>
           {{else}}
@@ -374,7 +384,7 @@
           {{#if userDataField 'adminClubs'}}
             {{#each club in userDataField 'adminClubs'}}
               <ul>
-                <li><h5>{{ club.clubName }}:</h5></li>
+                <li><h5>{{ club.clubName }} ({{club._id}}):</h5></li>
                 <li>{{ club.bio }}</li>
                 <li>
                   <ul>
@@ -385,6 +395,14 @@
                   </ul>
                 </li>
                 <li>{{ club.url }}</li>
+                <li>
+                  <ul>
+                    <li><h5>{{club.clubName}} admins:</h5></li>
+                    {{#each admin in club.admins}}
+                      <li>{{admin}}</li>
+                    {{/each}}
+                  </ul>
+                </li>
               </ul>
             {{/each}}
           {{else}}
