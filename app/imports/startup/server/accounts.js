@@ -38,18 +38,27 @@ Accounts.onCreateUser(function (options, user) {
   };
   // if the default club has not yet been added to Clubs collection, do so.
   // returns 'undefined' if none found (falsey), else first matched obj. (truthy?)
-  let defaultPresent = Clubs.findOne({clubName: 'The Null Club'});
-  if(!(defaultPresent)){
+  let defaultExists = Clubs.findOne({clubName: 'The Null Club'});
+  if(!(defaultExists)){
     Clubs.insert(defaultClub);
   }
+  // add this user as a member and admin of the default club
+  // in this case, need to add username to club fields before adding club to the user fields (so it's uptodate when added)
+  // see https://docs.mongodb.com/manual/reference/operator/update/
+  // TODO: find if will be any problems using user.username before default onCreateUser code
+  // TODO: add function to Clubs collection api that allows user.clubs and club.members to be set simultaneously
+  Clubs.update({clubName: 'The Null Club'}, { $addToSet: {members: user.username} });
+  Clubs.update({clubName: 'The Null Club'}, { $addToSet: {admins: user.username} });
 
   // extending Meteor.user collection with custom fields
   // this is the recommended way, see https://guide.meteor.com/accounts.html#adding-fields-on-registration
   // TODO: find how to extend the Meteor.user schema to always include these fields
-  user.clubs = [defaultClub];
+  const updatedDefault = Clubs.findOne({clubName: 'The Null Club'});
+  user.clubs = [updatedDefault];
   user.events = ['The Null Event-1', 'The Null Event-2'];
-  user.adminClubs = [defaultClub];
+  user.adminClubs = [updatedDefault];
   user.isSiteAdmin = false;
+
 
   // We still want the default hook's 'profile' behavior.
   if (options.profile)
@@ -57,6 +66,8 @@ Accounts.onCreateUser(function (options, user) {
 
   return user;
 });
+
+
 
 /* When running app for first time, pass a settings file to set up a default user account. */
 if (Meteor.users.find().count() === 0) {
