@@ -59,6 +59,15 @@ Accounts.onCreateUser(function (options, user) {
   user.adminClubs = [updatedDefault];
   user.isSiteAdmin = false;
 
+  // FIXME: the fact that we need to add club to user.clubs after it has beed updated
+  //   brings up question that maybe it would be better to just keep club data separate and
+  //   have users access it by accessing clubs in Clubs collection for which their username
+  //   is in the members or admins array of that club. Else we would need to update every user
+  //   document that has someClub in its clubs array whenever someClub's data changes.
+  //   I think current best option would be to have user obj. only be aware of the clubNames
+  //   (or other) uniq. identifier of clubs they are a part of (or admin) and use that as key
+  //   to find the other club info from the Clubs collection as needed.
+
 
   // We still want the default hook's 'profile' behavior.
   if (options.profile)
