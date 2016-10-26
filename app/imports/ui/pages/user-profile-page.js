@@ -42,7 +42,6 @@ Template.User_Profile_Page.helpers({
   },
   getClubData(clubName, fieldVal) {
     const club = Clubs.findOne({ clubName: clubName });
-    console.log(club && club[fieldVal]);
     return club && club[fieldVal];
   },
   firstName: function () {
