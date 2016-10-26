@@ -42,8 +42,9 @@ Accounts.onCreateUser(function (options, user) {
   if(!(defaultExists)){
     Clubs.insert(defaultClub);
   }
+
+  // This is a test of adding members to clubs dynamically, rather than at club declaration.
   // add this user as a member and admin of the default club
-  // in this case, need to add username to club fields before adding club to the user fields (so it's uptodate when added)
   // see https://docs.mongodb.com/manual/reference/operator/update/
   // TODO: find if will be any problems using user.username before default onCreateUser code
   // TODO: add function to Clubs collection api that allows user.clubs and club.members to be set simultaneously
@@ -53,11 +54,19 @@ Accounts.onCreateUser(function (options, user) {
   // extending Meteor.user collection with custom fields
   // this is the recommended way, see https://guide.meteor.com/accounts.html#adding-fields-on-registration
   // TODO: find how to extend the Meteor.user schema to always include these fields
-  const updatedDefault = Clubs.findOne({clubName: 'The Null Club'});
-  user.clubs = [updatedDefault];
+  user.clubs = [defaultClub.clubName];
   user.events = ['The Null Event-1', 'The Null Event-2'];
-  user.adminClubs = [updatedDefault];
+  user.adminClubs = [defaultClub.clubName];
   user.isSiteAdmin = false;
+
+  // FIXME: the fact that we need to add club to user.clubs after it has beed updated
+  //   brings up question that maybe it would be better to just keep club data separate and
+  //   have users access it by accessing clubs in Clubs collection for which their username
+  //   is in the members or admins array of that club. Else we would need to update every user
+  //   document that has someClub in its clubs array whenever someClub's data changes.
+  //   I think current best option would be to have user obj. only be aware of the clubNames
+  //   (or other) uniq. identifier of clubs they are a part of (or admin) and use that as key
+  //   to find the other club info from the Clubs collection as needed.
 
 
   // We still want the default hook's 'profile' behavior.

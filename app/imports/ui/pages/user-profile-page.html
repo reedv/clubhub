@@ -325,7 +325,7 @@
       <table class="ui celled table">
         <thead>
         <th> Can use extended Meteor.users collection document items to
-          customize the page
+          dynamically customize the page
         </th>
         </thead>
         <tbody>
@@ -340,29 +340,32 @@
         <tr>
           <h3>clubs:</h3>
           {{#if userDataField 'clubs'}}
-            <ul>
-              {{#each club in userDataField 'clubs'}}
-                <li><h5>{{ club.clubName }} ({{club._id}}):</h5></li>
-                <li>{{ club.bio }}</li>
+            {{#each club in (userDataField 'clubs') }}
+              <ul>
+                <li><h5>{{ club }}
+                  <!-- This seems to be the way to pass multiple args in helper functions -->
+                  ({{getClubData club "_id" }}):</h5></li>
+                <li>{{ getClubData club "bio" }}</li>
                 <li>
                   <ul>
-                    <li><h5>{{club.clubName}} events:</h5></li>
-                    {{#each event in club.events}}
-                      <li>{{event}}</li>
+                    <li><h5>{{ getClubData club "clubName" }} events:</h5></li>
+                    <!-- Parens can be used to indicate precedence, but are not actually necessary here -->
+                    {{#each event in (getClubData club "events") }}
+                      <li>{{ event }}</li>
                     {{/each}}
                   </ul>
                 </li>
-                <li>{{ club.url }}</li>
+                <li>{{ getClubData club "url" }}</li>
                 <li>
                   <ul>
-                    <li><h5>{{club.clubName}} members:</h5></li>
-                    {{#each member in club.members}}
+                    <li><h5>{{ getClubData club "clubName" }} members:</h5></li>
+                    {{#each member in (getClubData club "members") }}
                       <li>{{member}}</li>
                     {{/each}}
                   </ul>
                 </li>
-              {{/each}}
-            </ul>
+              </ul>
+            {{/each}}
           {{else}}
             Clubs placeholder
           {{/if}}
@@ -371,7 +374,7 @@
           <h3>events:</h3>
           {{#if userDataField 'events'}}
             <ul>
-              {{#each event in userDataField 'events'}}
+              {{#each event in (userDataField 'events') }}
                 <li>{{ event }}</li>
               {{/each}}
             </ul>
@@ -382,24 +385,25 @@
         <tr>
           <h3>admin of clubs:</h3>
           {{#if userDataField 'adminClubs'}}
-            {{#each club in userDataField 'adminClubs'}}
+            {{#each club in (userDataField 'clubs') }}
               <ul>
-                <li><h5>{{ club.clubName }} ({{club._id}}):</h5></li>
-                <li>{{ club.bio }}</li>
+                <li><h5>{{ club }}
+                  ({{getClubData club "_id" }}):</h5></li>
+                <li>{{ getClubData club "bio" }}</li>
                 <li>
                   <ul>
-                    <li><h5>{{club.clubName}} events:</h5></li>
-                    {{#each event in club.events}}
-                      <li>{{event}}</li>
+                    <li><h5>{{ getClubData club "clubName" }} events:</h5></li>
+                    {{#each event in (getClubData club "events") }}
+                      <li>{{ event }}</li>
                     {{/each}}
                   </ul>
                 </li>
-                <li>{{ club.url }}</li>
+                <li>{{ getClubData club "url" }}</li>
                 <li>
                   <ul>
-                    <li><h5>{{club.clubName}} admins:</h5></li>
-                    {{#each admin in club.admins}}
-                      <li>{{admin}}</li>
+                    <li><h5>{{ getClubData club "clubName" }} admins:</h5></li>
+                    {{#each member in (getClubData club "admins") }}
+                      <li>{{member}}</li>
                     {{/each}}
                   </ul>
                 </li>

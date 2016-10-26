@@ -6,6 +6,7 @@ import {ReactiveDict} from 'meteor/reactive-dict';
 import {FlowRouter} from 'meteor/kadira:flow-router';
 import {_} from 'meteor/underscore';
 import { Meteor } from 'meteor/meteor'  // to access Meteor.users collection
+import { Clubs, ClubsSchema } from '../../api/clubs/clubs.js';
 
 // consts to use in reactive dicts
 const displayErrorMessages = 'displayErrorMessages';
@@ -17,6 +18,7 @@ const friendsActive = 'friendsActive';
 Template.User_Profile_Page.onCreated(function onCreated() {
   this.autorun(() => {
     this.subscribe('UserData');  // extended Meteor.user collection data
+    this.subscribe('Clubs');
   });
 
   // use reactive dict to store error messages
@@ -37,6 +39,10 @@ Template.User_Profile_Page.helpers({
     // See https://dweldon.silvrback.com/guards to understand '&&' in next line.
     // once the subcribed collection has loaded, if the user exists, then return the specified fieldVal
     return user && user[fieldVal];
+  },
+  getClubData(clubName, fieldVal) {
+    const club = Clubs.findOne({ clubName: clubName });
+    return club && club[fieldVal];
   },
   firstName: function () {
     return Meteor.user().username;
