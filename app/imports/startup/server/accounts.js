@@ -42,8 +42,9 @@ Accounts.onCreateUser(function (options, user) {
   if(!(defaultExists)){
     Clubs.insert(defaultClub);
   }
+
+  // This is a test of adding members to clubs dynamically, rather than at club declaration.
   // add this user as a member and admin of the default club
-  // in this case, need to add username to club fields before adding club to the user fields (so it's uptodate when added)
   // see https://docs.mongodb.com/manual/reference/operator/update/
   // TODO: find if will be any problems using user.username before default onCreateUser code
   // TODO: add function to Clubs collection api that allows user.clubs and club.members to be set simultaneously
@@ -53,10 +54,9 @@ Accounts.onCreateUser(function (options, user) {
   // extending Meteor.user collection with custom fields
   // this is the recommended way, see https://guide.meteor.com/accounts.html#adding-fields-on-registration
   // TODO: find how to extend the Meteor.user schema to always include these fields
-  const updatedDefault = Clubs.findOne({clubName: 'The Null Club'});
-  user.clubs = [updatedDefault];
+  user.clubs = [defaultClub.clubName];
   user.events = ['The Null Event-1', 'The Null Event-2'];
-  user.adminClubs = [updatedDefault];
+  user.adminClubs = [defaultClub.clubName];
   user.isSiteAdmin = false;
 
   // FIXME: the fact that we need to add club to user.clubs after it has beed updated
