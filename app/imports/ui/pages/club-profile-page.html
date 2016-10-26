@@ -1,0 +1,105 @@
+<template name="Club_Profile_Page">
+  <!-- Make sure all subscriptions for this template are available to us, so fineOne can access subcribed collections -->
+  {{#if Template.subscriptionsReady}}
+    {{#if currentUser}}
+      <div class="ui container">
+        <div class="ui two column grid">
+          <div class="four wide column">
+            <div class="ui left secondary vertical pointing menu">
+              <a class="item homeTab {{homeActiveClass}}">
+                <i class="home icon"></i>Home
+              </a>
+              <a class="item eventsTab {{eventsActiveClass}}">
+                <i class="calendar outline icon"></i>Events
+              </a>
+              <a class="item friendsTab {{friendsActiveClass}}">
+                <i class="user icon"></i>Friends
+              </a>
+            </div>
+          </div>
+
+
+          <!-- user home page logic -->
+          {{#if homeActiveClass}}
+            <div class="column">
+              THIS IS TEST HOME
+            </div>
+          {{/if}}
+
+
+          <!-- user events page logic -->
+          {{#if eventsActiveClass}}
+            <div class="column">
+              THIS IS TEST EVENTS
+            </div>
+          {{/if}}
+
+
+          <!-- user friends page logic -->
+          {{#if friendsActiveClass}}
+            <div class="column">
+              THIS IS TEST FRIENDS
+            </div>
+          {{/if}}
+        </div>
+      </div>
+
+
+
+      <!-- testing and proof-of-concept section -->
+      <table class="ui celled table">
+        <thead>
+        <th> Can use extended Clubs collection document items to
+          dynamically customize the page
+        </th>
+        </thead>
+        <tbody>
+        <tr>
+          <h3>Club:</h3>
+          {{#if clubDataField 'clubName'}}
+            {{ clubDataField 'clubName'}}
+          {{else}}
+            clubName placeholder
+          {{/if}}
+        </tr>
+        <tr>
+          <h3>Club Data:</h3>
+          <ul>
+            <li><h5>
+              <!-- This seems to be the way to pass multiple args in helper functions -->
+              Club _id: {{ clubDataField "_id" }}:</h5>
+            </li>
+            <li>{{ clubDataField "bio" }}</li>
+            <li>
+              <ul>
+                <li><h5>{{ clubDataField "clubName" }} events:</h5></li>
+                <!-- Parens can be used to indicate precedence, but are not actually necessary here -->
+                {{#each event in (clubDataField "events") }}
+                  <li>{{ event }}</li>
+                {{/each}}
+              </ul>
+            </li>
+            <li>{{ clubDataField "url" }}</li>
+            <li>
+              <ul>
+                <li><h5>{{ clubDataField "clubName" }} members:</h5></li>
+                {{#each member in (clubDataField "members") }}
+                  <li>{{ member }}</li>
+                {{/each}}
+              </ul>
+            </li>
+            <li>
+              <ul>
+                <li><h5>{{ clubDataField "clubName" }} admins:</h5></li>
+                {{#each admin in (clubDataField "admins") }}
+                  <li>{{ admin }}</li>
+                {{/each}}
+              </ul>
+            </li>
+          </ul>
+        </tr>
+        </tbody>
+      </table>
+    {{/if}}
+  {{/if}}
+</template>
