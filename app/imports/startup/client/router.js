@@ -15,6 +15,13 @@ FlowRouter.route('/user-profile', {
   },
 });
 
+FlowRouter.route('/club-profile/:_id', {
+  name: 'Club_Profile_Page',
+  action() {
+    BlazeLayout.render('App_Body', { main: 'Club_Profile_Page' });
+  },
+});
+
 FlowRouter.route('/club-admin-profile', {
   name: 'Club_Admin_Page',
   action() {

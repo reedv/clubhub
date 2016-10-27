@@ -27,7 +27,9 @@ Template.Edit_Contact_Page.helpers({
   contactDataField(fieldVal) {
     // app/imports/startup/client/router.js defines the 'id' vs '_id' bindings
     //   see app/imports/ui/pages/home-page.html
-    const contact = Contacts.findOne(FlowRouter.getParam('id'));
+    // uses the id param specified in home-page.html
+    //   see https://github.com/kadirahq/flow-router#routes-definition
+    const contact = Contacts.findOne(FlowRouter.getParam('id')); 
 
     // See https://dweldon.silvrback.com/guards to understand '&&' in next line.
     // if the contact exists, then return the fieldVal
