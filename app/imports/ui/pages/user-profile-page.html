@@ -3,7 +3,7 @@
   {{#if Template.subscriptionsReady}}
     {{#if currentUser}}
 
-      <div class="ui container">
+      <div class="ui fluid container">
         <div class="ui two column grid">
           <div class="four wide column">
             <div class="ui left secondary vertical pointing menu">
@@ -23,7 +23,6 @@
           <!-- user home page logic -->
           {{#if homeActiveClass}}
             <div class="ten wide column">
-              THIS IS TEST HOME
               <div class="ui container" style="padding: 0px">
                 <h2>My Clubs</h2>
                 <div class="ui three stackable fluid link cards">
@@ -34,12 +33,12 @@
                            src="/images/Sample-Photo-1.jpg">
                     </div>
                     <div class="content">
-                      <div class="header">Matt Giampietro</div>
+                      <div class="header">ClubName-1</div>
                       <div class="meta">
-                        <a>Friends</a>
+                        <a>keywords / topics</a>
                       </div>
                       <div class="description">
-                        Matthew is an interior designer living in New York.
+                        Club description / bio.
                       </div>
                     </div>
                     <div class="extra content">
@@ -48,7 +47,7 @@
                       </span>
                       <span>
                         <i class="user icon"></i>
-                        75 Friends
+                        75 Members
                       </span>
                     </div>
                   </div>
@@ -59,12 +58,12 @@
                            src="/images/Sample-Photo-1.jpg">
                     </div>
                     <div class="content">
-                      <div class="header">Molly</div>
+                      <div class="header">ClubName-2</div>
                       <div class="meta">
-                        <span class="date">Coworker</span>
+                        <a>keywords / topics</a>
                       </div>
                       <div class="description">
-                        Molly is a personal assistant living in Paris.
+                        Club description / bio.
                       </div>
                     </div>
                     <div class="extra content">
@@ -73,7 +72,7 @@
                       </span>
                       <span>
                         <i class="user icon"></i>
-                        35 Friends
+                        35 Members
                       </span>
                     </div>
                   </div>
@@ -84,12 +83,12 @@
                            src="/images/Sample-Photo-1.jpg">
                     </div>
                     <div class="content">
-                      <div class="header">Elyse</div>
+                      <div class="header">ClubName-3</div>
                       <div class="meta">
-                        <a>Coworker</a>
+                        <a>keywords / topics</a>
                       </div>
                       <div class="description">
-                        Elyse is a copywriter working in New York.
+                        Club description / bio.
                       </div>
                     </div>
                     <div class="extra content">
@@ -98,7 +97,7 @@
                       </span>
                       <span>
                         <i class="user icon"></i>
-                        151 Friends
+                        151 Members
                       </span>
                     </div>
                   </div>
@@ -109,12 +108,12 @@
                            src="/images/Sample-Photo-1.jpg">
                     </div>
                     <div class="content">
-                      <div class="header">Molly</div>
+                      <div class="header">ClubName-4</div>
                       <div class="meta">
-                        <span class="date">Coworker</span>
+                        <a>keywords / topics</a>
                       </div>
                       <div class="description">
-                        Molly is a personal assistant living in Paris.
+                        Club description / bio.
                       </div>
                     </div>
                     <div class="extra content">
@@ -123,7 +122,7 @@
                       </span>
                       <span>
                         <i class="user icon"></i>
-                        35 Friends
+                        35 Members
                       </span>
                     </div>
                   </div>
@@ -135,10 +134,9 @@
 
 
           <!-- user events page logic -->
+          <!-- TODO: events tracker would be better as a calander -->
           {{#if eventsActiveClass}}
             <div class="ten wide column">
-              THIS IS TEST EVENTS
-              Honestly, this would be better as a calendar
               <div class="ui container">
                 <div class="ui huge celled list">
 
@@ -149,7 +147,7 @@
                           <div class="ui raised link card"
                                style="width: 110px;">
                             <div class="content"
-                                 style="background-color: darkslategray;">
+                                 style="background-color: darkslategray; padding: 10px">
                               <div class="header float center"
                                    style="color: yellow;">9
                               </div>
@@ -181,7 +179,7 @@
                           <div class="ui raised link card"
                                style="width: 110px;">
                             <div class="content"
-                                 style="background-color: darkslategray;">
+                                 style="background-color: darkslategray; padding: 10px">
                               <div class="header float center"
                                    style="color: yellow;">
                                 23
@@ -214,7 +212,7 @@
                           <div class="ui raised link card"
                                style="width: 110px;">
                             <div class="content"
-                                 style="background-color: darkslategray;">
+                                 style="background-color: darkslategray; padding: 10px">
                               <div class="header float center"
                                    style="color: greenyellow;">9
                               </div>
@@ -246,7 +244,7 @@
                           <div class="ui raised link card"
                                style="width: 110px;">
                             <div class="content"
-                                 style="background-color: darkslategray;">
+                                 style="background-color: darkslategray; padding: 10px">
                               <div class="header float center"
                                    style="color: greenyellow;">15
                               </div>
@@ -278,7 +276,7 @@
                           <div class="ui raised link card"
                                style="width: 110px;">
                             <div class="content"
-                                 style="background-color: darkslategray;">
+                                 style="background-color: darkslategray; padding: 10px">
                               <div class="header float center"
                                    style="color: greenyellow;">25
                               </div>
@@ -341,13 +339,14 @@
           <h3>clubs:</h3>
           {{#if userDataField 'clubs'}}
             {{#each club in (userDataField 'clubs') }}
+              <h5>{{ club }}
+                <!-- This seems to be the way to pass multiple args in helper functions -->
+                ({{getClubData club "_id" }}):
+              </h5>
               <ul>
-                <li><h5>{{ club }}
-                  <!-- This seems to be the way to pass multiple args in helper functions -->
-                  ({{getClubData club "_id" }}):</h5>
-                </li>
                 <li><a
-                    href="{{pathFor 'Club_Profile_Page' _id=(getClubData club "_id") }}"> Club profile</a>
+                    href="{{pathFor 'Club_Profile_Page' _id=(getClubData club "_id") }}">
+                  Club profile link</a>
                 </li>
                 <li>{{ getClubData club "bio" }}</li>
                 <li>
@@ -390,9 +389,11 @@
           <h3>admin of clubs:</h3>
           {{#if userDataField 'adminClubs'}}
             {{#each club in (userDataField 'clubs') }}
+              <h5>{{ club }}
+                <!-- This seems to be the way to pass multiple args in helper functions -->
+                ({{getClubData club "_id" }}):
+              </h5>
               <ul>
-                <li><h5>{{ club }}
-                  ({{getClubData club "_id" }}):</h5></li>
                 <li>{{ getClubData club "bio" }}</li>
                 <li>
                   <ul>
