@@ -2,8 +2,8 @@
  * Created by reedvilanueva on 10/23/16.
  */
 
-import { Mongo } from 'meteor/mongo';
-import { SimpleSchema } from 'meteor/aldeed:simple-schema';
+import {Mongo} from 'meteor/mongo';
+import {SimpleSchema} from 'meteor/aldeed:simple-schema';
 
 /* eslint-disable object-shorthand */
 
@@ -50,7 +50,6 @@ export const ClubsSchema = new SimpleSchema({
 });
 Clubs.attachSchema(ClubsSchema);
 
-
 // for testing: for testing logic of user discovering and joining a club
 const joinableNullClub = {
   clubName: 'joinableNull Club',
@@ -59,3 +58,6 @@ const joinableNullClub = {
   url: 'https://join.us'
 };
 Clubs.insert(joinableNullClub);
+
+// NOTE: rather than adding methods to an api/collection file to give certain collections different behaviors
+// this (http://stackoverflow.com/a/21546609) seems to be to offical way to do it.

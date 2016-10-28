@@ -341,11 +341,11 @@
             {{#each club in (userDataField 'clubs') }}
               <h5>{{ club }}
                 <!-- This seems to be the way to pass multiple args in helper functions -->
-                ({{getClubData club "_id" }}):
+                ({{ getClubData club "_id" }}):
               </h5>
               <ul>
                 <li><a
-                    href="{{pathFor 'Club_Profile_Page' _id=(getClubData club "_id") }}">
+                    href="{{ pathFor 'Club_Profile_Page' _id=(getClubData club "_id") }}">
                   Club profile link</a>
                 </li>
                 <li>{{ getClubData club "bio" }}</li>
